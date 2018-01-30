@@ -1,0 +1,64 @@
+#
+#  ========================================================================
+#  Fragmentation Experiments
+#  ========================================================================
+#  
+#  This file is part of Fragmentation experiments.
+#  
+#  Fragmentation Experiments is free software: you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License as published
+#  by the Free Software Foundation, either version 3 of the License, or (at
+#  your option) any later version.
+#  
+#  Fragmentation Experiments is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#  General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License along
+#  with Fragmentation Experiments.  If not, see <http://www.gnu.org/licenses/>.
+#  
+#  (C) Copyright 2017, Gabor Kecskemeti (g.kecskemeti@ljmu.ac.uk)
+#
+
+#The below config entries must be updated for the up to date location of the cache and package list files
+[Config]
+# Insert here the folder of the package cache you intend to use for the crawler
+packagecache=
+# Insert here the file's name which lists the names of all packages you would want to consider as a base image (the format should be the same as one gets from dpkg -l)
+basepackagelist=
+
+[Contents]
+#List of packages experimented with for the paper titled "ENTICE VM image analysis and optimised fragmentation".
+
+# Basic servers
+debconf-utils mysql-server
+tomcat7 tomcat7-admin
+nginx
+nodejs
+rabbitmq-server
+mongodb-server
+redis-server
+apache2
+
+# Server stacks -- some coming from: https://en.wikipedia.org/wiki/Solution_stack
+# LAMP
+mysql-server php5-mysql libapache2-mod-php5 apache2
+# LAPP - http://54john.blogspot.co.uk/2012/03/how-to-build-lapp-linux-apache-postgres.html
+postgresql-9.3 php5-pgsql libapache2-mod-php5 apache2
+# LEMP
+nginx mysql-server php5-fpm php5-mysql
+# LLMP - https://www.digitalocean.com/community/tutorials/how-to-install-the-llmp-stack-linux-lighttpd-mysql-and-php-on-ubuntu-12-04
+lighttpd php5-cgi php5-mysql mysql-server
+# LYME - https://www.nextivr.com/building-lyme-server-linux-yaws-mnesia-erlang/
+erlang-yaws erlang-mnesia
+# LTM
+debconf-utils mysql-server tomcat7 tomcat7-admin
+# ME(A/R)N
+mongodb-server nodejs
+
+#Applications
+wordpress
+redmine redmine-mysql mysql-server
+#Owncloud below can no longer be installed on trusty from a package
+#owncloud
